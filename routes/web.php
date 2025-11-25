@@ -69,4 +69,8 @@ Route::get('/profile', function () {
 // Latihan 2: Route /admin/jobs hanya bisa diakses oleh admin
 Route::get('/admin/jobs', function () {
     return "Halaman Admin: blahblah(Hanya Admin yang Bisa Lihat)";
-})->middleware(['auth', 'isAdmin']);                  
+})->middleware(['auth', 'isAdmin']);       
+
+// hanya Admin yang bisa mengelola lowongan kerja.
+Route::resource('jobs',
+JobController::class)->middleware(['auth', 'isAdmin']);
